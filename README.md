@@ -4,6 +4,7 @@ Fall 2020 MGSC-310-01 Final Project using the "Goodreads-books" data set from Ka
 
 ![mixkit-person-using-binoculars-peering-out-from-behind-a-bush-24-original (2)](https://user-images.githubusercontent.com/69367085/102598800-68787780-40d1-11eb-80e3-87a247d07ba0.png)
 
+(Image source: https://mixkit.co/free-stock-art/person-using-binoculars-peering-out-from-behind-a-bush-24/ )
 
 # Reference
 https://www.kaggle.com/jealousleopard/goodreadsbooks
