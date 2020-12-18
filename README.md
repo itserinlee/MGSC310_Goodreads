@@ -1,5 +1,5 @@
 
-# MGSC 310-01 Final Project: Building Predictive Models -- Goodreads
+# MGSC 310 Final Project: Building Predictive Models
 Fall 2020 MGSC-310-01 Final Project using the "Goodreads-books" data set from Kaggle
 
 # Reference
