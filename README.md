@@ -1,5 +1,5 @@
 
-# MGSC310_Goodreads
+# Building Predictive Models for Goodreads Book Data Set
 Fall 2020 MGSC-310-01 Final Project using the "Goodreads-books" data set from Kaggle
 
 # Reference
