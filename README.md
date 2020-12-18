@@ -7,6 +7,7 @@ https://www.kaggle.com/jealousleopard/goodreadsbooks
 
 # Notes
 - Scraped from Goodreads API
+- Programming Language: R
 
 # Data At-A-Glance
 - variables used in project:
