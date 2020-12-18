@@ -11,7 +11,7 @@ https://www.kaggle.com/jealousleopard/goodreadsbooks
 # Data At-A-Glance
 - variables used in project:
   - outcome: “average_rating”
-  - predictors: 9 total
+  - predictors (9 total):
     - "num_pages"
     - “book_ratings_count”
     - “text_reviews_count”
