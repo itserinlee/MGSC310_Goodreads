@@ -9,9 +9,11 @@ Fall 2020 MGSC-310-01 Final Project using the "Goodreads-books" data set from Ka
 # Reference
 https://www.kaggle.com/jealousleopard/goodreadsbooks
 
-# Notes
+# Note
 - Scraped from Goodreads API
-- Programming Language: R
+
+# Programming Language
+- R
 
 # Data At-A-Glance
 - variables used in project:
