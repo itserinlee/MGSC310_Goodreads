@@ -12,7 +12,7 @@
 - https://www.kaggle.com/choobani/goodread-authors?select=final_dataset.csv
 
 # Note
-- Scraped from Goodreads API
+- Both data sets (listed above) from Kaggle were scraped from the Goodreads API.
 
 # Programming Language
 - R
