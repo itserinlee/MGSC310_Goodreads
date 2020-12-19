@@ -1,7 +1,7 @@
 ---
-title: "MGSC310FinalProject"
+title: "FinalProject12-3"
 author: "Erin Lee"
-date: "12/18/2020"
+date: "12/3/2020"
 output:
   html_document: default
   pdf_document: default
@@ -14,11 +14,10 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Final Project Rmarkdown File
 
-## Group Members: Adam Gonzalez, Jon Le (4pm section), Erin Lee, Debbie Lu & Corinne Smith
+## Group Members: Adam Gonzalez, Jon Le (4pm section), Erin Lee, Debbie Lu, Corinne Smith
 
 
 ### NOTE: `echo = FALSE` parameter is added to the code chunk to prevent printing of the R code that generated the plot.
-
 
 
 # 1) CLEAR ENVIRONMENT
@@ -880,10 +879,6 @@ print(final)
 
 
 # 23) METRICS DATA TABLE
-
-Credit for the code below:
-https://rfortherestofus.com/2019/11/how-to-make-beautiful-tables-in-r/
-
 
 Need to load 'kableExtra' library.
 
