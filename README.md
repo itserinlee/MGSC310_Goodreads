@@ -9,6 +9,7 @@
 
 # Reference
 https://www.kaggle.com/jealousleopard/goodreadsbooks
+https://www.kaggle.com/choobani/goodread-authors?select=final_dataset.csv
 
 # Note
 - Scraped from Goodreads API
