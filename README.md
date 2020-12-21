@@ -7,17 +7,17 @@
 
 (Image source: https://mixkit.co/free-stock-art/person-using-binoculars-peering-out-from-behind-a-bush-24/ )
 
-# Data Sets
+## Data Sets
 - https://www.kaggle.com/jealousleopard/goodreadsbooks
 - https://www.kaggle.com/choobani/goodread-authors?select=final_dataset.csv
 
-# Note
+## Note
 - Both data sets (listed above) from Kaggle were scraped from the Goodreads API.
 
-# Programming Language
+## Programming Language
 - R
 
-# Data At-A-Glance
+## Data At-A-Glance
 - variables used in project:
   - outcome: “average_rating”
   - predictors (9 total):
@@ -32,14 +32,14 @@
     - “gender”
 - removed 11 variables from original data set
 
-# Known Errors
+## Known Errors
 N/A
 
-# Instructions
+## Instructions
 - Open & run in RStudio.
 
-# Models
-## 1. Linear Regression
+## Models
+### 1. Linear Regression
 
 *Table of Coefficients*
 
@@ -49,7 +49,7 @@ N/A
 
 ![lr_coef](https://user-images.githubusercontent.com/69367085/102663748-4cf38800-4136-11eb-96c1-405ece9d064a.jpg)
 
-## 2. Elastic Net
+### 2. Elastic Net
 
 *Plot of the Error Versus the Penalty (Regression with Regularization)*
 
@@ -59,13 +59,13 @@ N/A
 
 ![coef_path](https://user-images.githubusercontent.com/69367085/102663836-744a5500-4136-11eb-9541-e3ddbf89beda.jpg)
 
-## 3. Bootstrap Aggregated (Bagged) Decision Tree
+### 3. Bootstrap Aggregated (Bagged) Decision Tree
 
 *Examining an Individual Model from Bagging*
 
 ![bagged_tree](https://user-images.githubusercontent.com/69367085/102663882-875d2500-4136-11eb-8139-68e4e9a6e493.jpg)
 
-## 4. Random Forest
+### 4. Random Forest
 
 *Plot of Error Vesus the Number of Trees*
 
@@ -79,6 +79,6 @@ N/A
 
 ![rf_explainer_pckg](https://user-images.githubusercontent.com/69367085/102664015-c68b7600-4136-11eb-8064-726edc9d7ad2.jpg)
 
-# Model Evaluation: Comparison of Metrics
+## Model Evaluation: Comparison of Metrics
 
 ![model_metrics](https://user-images.githubusercontent.com/69367085/102664028-ce4b1a80-4136-11eb-8656-7db3be418ea2.jpg)
