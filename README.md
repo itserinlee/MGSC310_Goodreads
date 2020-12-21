@@ -1,6 +1,6 @@
 
 # MGSC 310 Final Project: Building Predictive Models
-*Fall 2020 MGSC-310-01 Final Project using the **"Goodreads-books"** data set from Kaggle*
+*Fall 2020 MGSC-310-01
 
 
 ![mixkit-person-using-binoculars-peering-out-from-behind-a-bush-24-original (2)](https://user-images.githubusercontent.com/69367085/102598800-68787780-40d1-11eb-80e3-87a247d07ba0.png)
@@ -8,6 +8,7 @@
 (Image source: https://mixkit.co/free-stock-art/person-using-binoculars-peering-out-from-behind-a-bush-24/ )
 
 ## Data Sets
+***"Goodreads-books"** data set from Kaggle*
 - https://www.kaggle.com/jealousleopard/goodreadsbooks
 - https://www.kaggle.com/choobani/goodread-authors?select=final_dataset.csv
 
