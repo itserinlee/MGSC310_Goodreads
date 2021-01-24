@@ -1,7 +1,5 @@
 # Final Project R File
 
-### Group: Adam Gonzalez, Jon Le, Erin Lee, Debbie Lu & Corinne Smith
-
 
 # 1) CLEAR ENVIRONMENT
 
@@ -13,12 +11,9 @@ rm(list = ls())
 
 # 2) LOAD THE DATA
 
-### ---------------------------------------
 ### Data sets:
-### "books" is from https://www.kaggle.com/jealousleopard/goodreadsbooks
-### "books_two" is from https://www.kaggle.com/choobani/goodread-authors?select=final_dataset.csv
-### ---------------------------------------
-
+#"books" is from https://www.kaggle.com/jealousleopard/goodreadsbooks
+#"books_two" is from https://www.kaggle.com/choobani/goodread-authors?select=final_dataset.csv
 
 books <- read.csv(here::here("datasets", "books.csv"))
 books_two <- read.csv(here::here("datasets", "final_dataset.csv"))
@@ -27,21 +22,15 @@ books_two <- read.csv(here::here("datasets", "final_dataset.csv"))
 
 # 3) LOAD LIBRARIES
 
-#### ---------------------------------------
 library('yardstick')
-### ---------------------------------------
 
-### ---------------------------------------
 ### data visualization
-### --------------------------------------
 library('ggplot2')
 library('plotly')
 library('gganimate')
 library('ggridges')
 
-### ---------------------------------------
 ### data manipulation
-### --------------------------------------
 library('forcats')
 library('tidyverse')
 library('magrittr')
@@ -55,39 +44,27 @@ library('tidyr')
 library('data.table')
 library('kableExtra')
 
-### ---------------------------------------
 ### sentiment analysis
-### --------------------------------------
 library('sentimentr')
 
-### ---------------------------------------
 ### summary statistics
-### --------------------------------------
 #install.packages("qwraps2")
 library("qwraps2")
 
-### ---------------------------------------
 ### model validation library
-### ---------------------------------------
 library('rsample')
 
-### ---------------------------------------
 ### generalized linear model libraries
-### ---------------------------------------
 library('glmnet')
 library('glmnetUtils')
 
-### ---------------------------------------
 ### regression output
-### ---------------------------------------
-### install.packages('sjPlot')
+#install.packages('sjPlot')
 library('sjPlot')
-### install.packages('sjPlot')
+#install.packages('sjPlot')
 library('tidymodels')
 
-### ---------------------------------------
 ### random forest libraries
-### ---------------------------------------
 library('partykit')
 #library('tidyverse')
 library('PerformanceAnalytics')
@@ -97,13 +74,9 @@ library('randomForest')
 #install.packages("randomForestExplainer")
 library('randomForestExplainer')
 
-### ---------------------------------------
-# lasso libraries
-### ---------------------------------------
+### lasso libraries
 library('broom')
 library('coefplot')
-### ---------------------------------------
-
 
 
 
@@ -125,13 +98,11 @@ books_two <- books_two %>% rename(author = name,
 ### Need 'sentimentr' library.
 
 sentiment_DF <- get_sentences(books$title) %>% sentiment_by(books$title)
-
 head(sentiment_DF)
 
 
 
 # 5) MERGING
-
 
 books_s <- inner_join(x = books,
                       y = sentiment_DF,
@@ -175,7 +146,7 @@ books_total <- books_1 %>%
   )
 
 
-### remove irrelevant variables (11):
+#remove irrelevant variables (11):
 ### sd(standard deviation of words in title), author ID, image_URL, about, influence, website, twitter, original hometown, country, latitude, longitude
 
 books_corti <- books_total %>% select(-isbn13,
@@ -195,21 +166,19 @@ books_corti <- books_total %>% select(-isbn13,
                                       )
 
 
-
-
-### View(books_corti)
+#View(books_corti)
 
 
 
 # 7) DATA EXPLORATION
 
 ### NA VISUALIZATION
-### to see the number of missing values in each column
+#to see the number of missing values in each column
 
 ### STEPS:
-### 1) We need to sum through every column using a FOR loop.
-### 2) Then print the variable name using names(movies[i]).
-### 3) Finally, we print the sum of is.na() for just that variable.
+#1) We need to sum through every column using a FOR loop.
+#2) Then print the variable name using names(movies[i]).
+#3) Finally, we print the sum of is.na() for just that variable.
 
 ### FOR loop to see each column in books data set
 for(i in 1:ncol(books_corti)){
@@ -239,26 +208,21 @@ books_corti %>% select(starts_with("isbn")) %>% glimpse()
 
 
 ### exploring first 10 rows using slice() function
-
 explore_data <- books_corti %>% arrange(desc(avg_book_rating)) %>% slice(1:10) %>% select(title, author, avg_book_rating)
 print(explore_data)
-
 
 datatable(books_corti)
 
 
-
 ### ONLY select "NOT A BOOK" under author variable (a.k.a. the column) and store this as a new data frame
-
 not_a_book <- books_corti %>% filter(author == "NOT A BOOK") %>% nrow()
 print(not_a_book)
 
 
 
 ### Expectation:
-### Linear regression analysis is sensitive to outliers.
-### Use histogram to see where this will occur.
-
+#### Linear regression analysis is sensitive to outliers.
+#### Use histogram to see where this will occur.
 
 ggplot(books_corti, aes(x = avg_book_rating)) +
   xlab("Average Book Rating") +
@@ -296,7 +260,6 @@ p + theme(legend.position = "none")
 # 8) EXAMINING DATA STRUCTURE
 
 str(books_corti)
-
 
 
 # 9) SUMMARY STATS
@@ -362,7 +325,6 @@ print(sum_stats)
 # 10) LINEAR MODEL VALIDATION: TRAIN-TEST-SPLIT
 
 ### Need to load 'rsample' library here.
-
 
 set.seed(1818)
 
