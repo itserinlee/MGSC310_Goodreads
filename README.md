@@ -8,8 +8,8 @@
 ###### (Image source: https://mixkit.co/free-stock-art/person-using-binoculars-peering-out-from-behind-a-bush-24/ )
 
 ## Data Sets
-- https://www.kaggle.com/jealousleopard/goodreadsbooks
-- https://www.kaggle.com/choobani/goodread-authors?select=final_dataset.csv
+- "books.csv" file: https://www.kaggle.com/jealousleopard/goodreadsbooks
+- "final_dataset.csv" file: https://www.kaggle.com/choobani/goodread-authors?select=final_dataset.csv
 
 ## Note
 - Both data sets (listed above) from Kaggle were scraped from the Goodreads API.
