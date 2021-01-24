@@ -36,9 +36,9 @@ N/A
 ## Instructions
 
 ###### • Recommended: Run the program using the R Markdown format: "MGSC310FinalProject.Rmd" • 
-- Download datasets folder.
+- Download the "datasets" folder.
 - Download the "MGSC310FinalProject.Rmd" file.
-- Given that "datasets" folder & "MGSC310FinalProject.Rmd" file are in the same directory, open & run the R Markdown file in RStudio.
+- Given that the "datasets" folder & "MGSC310FinalProject.Rmd" file are in the same directory, open & run the R Markdown file in RStudio.
 
 ## Models
 ### 1. Linear Regression
