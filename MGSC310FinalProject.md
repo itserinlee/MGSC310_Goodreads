@@ -1,6 +1,3 @@
-knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
-
-
 # Final Project R File
 
 ### Group: Adam Gonzalez, Jon Le, Erin Lee, Debbie Lu & Corinne Smith
@@ -16,11 +13,11 @@ rm(list = ls())
 
 # 2) LOAD THE DATA
 
-# ---------------------------------------
-## Data sets:
+### ---------------------------------------
+### Data sets:
 ### "books" is from https://www.kaggle.com/jealousleopard/goodreadsbooks
 ### "books_two" is from https://www.kaggle.com/choobani/goodread-authors?select=final_dataset.csv
-# ---------------------------------------
+### ---------------------------------------
 
 
 books <- read.csv(here::here("datasets", "books.csv"))
@@ -30,21 +27,21 @@ books_two <- read.csv(here::here("datasets", "final_dataset.csv"))
 
 # 3) LOAD LIBRARIES
 
-# ---------------------------------------
+#### ---------------------------------------
 library('yardstick')
-# ---------------------------------------
+### ---------------------------------------
 
-# ---------------------------------------
-# data visualization
-# --------------------------------------
+### ---------------------------------------
+### data visualization
+### --------------------------------------
 library('ggplot2')
 library('plotly')
 library('gganimate')
 library('ggridges')
 
-# ---------------------------------------
-# data manipulation
-# --------------------------------------
+### ---------------------------------------
+### data manipulation
+### --------------------------------------
 library('forcats')
 library('tidyverse')
 library('magrittr')
@@ -58,39 +55,39 @@ library('tidyr')
 library('data.table')
 library('kableExtra')
 
-# ---------------------------------------
-# sentiment analysis
-# --------------------------------------
+### ---------------------------------------
+### sentiment analysis
+### --------------------------------------
 library('sentimentr')
 
-# ---------------------------------------
-# summary statistics
-# --------------------------------------
+### ---------------------------------------
+### summary statistics
+### --------------------------------------
 #install.packages("qwraps2")
 library("qwraps2")
 
-# ---------------------------------------
-# model validation library
-# ---------------------------------------
+### ---------------------------------------
+### model validation library
+### ---------------------------------------
 library('rsample')
 
-# ---------------------------------------
-# generalized linear model libraries
-# ---------------------------------------
+### ---------------------------------------
+### generalized linear model libraries
+### ---------------------------------------
 library('glmnet')
 library('glmnetUtils')
 
-# ---------------------------------------
-# regression output
-# ---------------------------------------
-# install.packages('sjPlot')
+### ---------------------------------------
+### regression output
+### ---------------------------------------
+### install.packages('sjPlot')
 library('sjPlot')
-# install.packages('sjPlot')
+### install.packages('sjPlot')
 library('tidymodels')
 
-# ---------------------------------------
-# random forest libraries
-# ---------------------------------------
+### ---------------------------------------
+### random forest libraries
+### ---------------------------------------
 library('partykit')
 #library('tidyverse')
 library('PerformanceAnalytics')
@@ -100,12 +97,12 @@ library('randomForest')
 #install.packages("randomForestExplainer")
 library('randomForestExplainer')
 
-# ---------------------------------------
+### ---------------------------------------
 # lasso libraries
-# ---------------------------------------
+### ---------------------------------------
 library('broom')
 library('coefplot')
-# ---------------------------------------
+### ---------------------------------------
 
 
 
@@ -125,7 +122,7 @@ books_two <- books_two %>% rename(author = name,
 
 # 4) SENTIMENT ANALYSIS
 
-# Need 'sentimentr' library.
+### Need 'sentimentr' library.
 
 sentiment_DF <- get_sentences(books$title) %>% sentiment_by(books$title)
 
@@ -142,8 +139,6 @@ books_s <- inner_join(x = books,
 head(books_s)
 
 
-# head(books_two)
-
 books_sa <-
   inner_join(x = books_s,
              y = books_two,
@@ -155,7 +150,7 @@ head(books_sa)
 # 6) DATA CLEANING
 
 
-# mutate to correct column data types
+### mutate to correct column data types
 books_1 <- books_sa %>% mutate(num_pages = as.numeric(num_pages),
                                avg_book_rating = as.numeric(avg_book_rating),
                                text_reviews_count = as.numeric(text_reviews_count),
@@ -166,7 +161,7 @@ books_1 <- books_sa %>% mutate(num_pages = as.numeric(num_pages),
 )
 
 
-# remove NAs
+### remove NAs
 books_total <- books_1 %>%
   filter(
     (!is.na(avg_book_rating)), (!is.na(book_ratings_count)), (!is.na(text_reviews_count)), (!is.na(publication_date)),
@@ -180,8 +175,8 @@ books_total <- books_1 %>%
   )
 
 
-# remove irrelevant variables (11):
-# sd(standard deviation of words in title), author ID, image_URL, about, influence, website, twitter, original hometown, country, latitude, longitude
+### remove irrelevant variables (11):
+### sd(standard deviation of words in title), author ID, image_URL, about, influence, website, twitter, original hometown, country, latitude, longitude
 
 books_corti <- books_total %>% select(-isbn13,
                                       -sd,
@@ -202,24 +197,24 @@ books_corti <- books_total %>% select(-isbn13,
 
 
 
-# View(books_corti)
+### View(books_corti)
 
 
 
 # 7) DATA EXPLORATION
 
-# NA VISUALIZATION
-# to see the number of missing values in each column
+### NA VISUALIZATION
+### to see the number of missing values in each column
 
-# STEPS:
-# 1) We need to sum through every column using a FOR loop.
-# 2) Then print the variable name using names(movies[i]).
-# 3) Finally, we print the sum of is.na() for just that variable.
+### STEPS:
+### 1) We need to sum through every column using a FOR loop.
+### 2) Then print the variable name using names(movies[i]).
+### 3) Finally, we print the sum of is.na() for just that variable.
 
-# FOR loop to see each column in books data set
+### FOR loop to see each column in books data set
 for(i in 1:ncol(books_corti)){
 
-  # print the following
+  ### print the following
   print(
 
     # first print "Variable: "
@@ -239,11 +234,11 @@ for(i in 1:ncol(books_corti)){
 
 
 
-# starts_with() function for certain columns...
+### starts_with() function for certain columns...
 books_corti %>% select(starts_with("isbn")) %>% glimpse()
 
 
-# exploring first 10 rows using slice() function
+### exploring first 10 rows using slice() function
 
 explore_data <- books_corti %>% arrange(desc(avg_book_rating)) %>% slice(1:10) %>% select(title, author, avg_book_rating)
 print(explore_data)
@@ -253,16 +248,16 @@ datatable(books_corti)
 
 
 
-# ONLY select "NOT A BOOK" under author variable (a.k.a. the column) and store this as a new data frame
+### ONLY select "NOT A BOOK" under author variable (a.k.a. the column) and store this as a new data frame
 
 not_a_book <- books_corti %>% filter(author == "NOT A BOOK") %>% nrow()
 print(not_a_book)
 
 
 
-# Expectation:
-# Linear regression analysis is sensitive to outliers.
-# Use histogram to see where this will occur.
+### Expectation:
+### Linear regression analysis is sensitive to outliers.
+### Use histogram to see where this will occur.
 
 
 ggplot(books_corti, aes(x = avg_book_rating)) +
@@ -306,8 +301,8 @@ str(books_corti)
 
 # 9) SUMMARY STATS
 
-# mean, std dev, min, max
-# need to install & load 'qwraps2' library
+### mean, std dev, min, max
+### need to install & load 'qwraps2' library
 
 options(qwraps2_markup = "markdown")
 View(books_corti)
@@ -366,7 +361,7 @@ print(sum_stats)
 
 # 10) LINEAR MODEL VALIDATION: TRAIN-TEST-SPLIT
 
-# Need to load 'rsample' library here.
+### Need to load 'rsample' library here.
 
 
 set.seed(1818)
@@ -386,7 +381,7 @@ head(books_train)
 
 # 11)  MODEL 1: LINEAR REGRESSION
 
-# Need 'dplyr', 'glmnet', and 'glmnetUtils' libraries here.
+### Need 'dplyr', 'glmnet', and 'glmnetUtils' libraries here.
 
 options(scipen = 999)
 
@@ -395,29 +390,29 @@ mod1 <- lm(avg_book_rating ~ num_pages + book_ratings_count + text_reviews_count
 summary(mod1)
 
 
-#--------------------------------------------------------
-# estimating "prettier" regression output
-#--------------------------------------------------------
+### --------------------------------------------------------
+### estimating "prettier" regression output
+### --------------------------------------------------------
 
-# Need 'sjPlot' and 'tidymodels' libraries.
+### Need 'sjPlot' and 'tidymodels' libraries.
 
-#--------------------------------------------------------
-# tab_model() outputs a table of results
-#--------------------------------------------------------
+### --------------------------------------------------------
+### tab_model() outputs a table of results
+### --------------------------------------------------------
 
 tab_model(mod1, digits = 3)
 
 
-#--------------------------------------------------------
-# plot_model() outputs a plot of regression coefficients
-#--------------------------------------------------------
+### --------------------------------------------------------
+### plot_model() outputs a plot of regression coefficients
+### --------------------------------------------------------
 
 plot_model(mod1)+ ylim(-0.1,0.1)  + ggtitle("            Average Book Rating Coefficients") + theme_minimal(base_size = 16)
 
 
-#--------------------------------------------------------
-# tidy() outputs a table of coefficients and their p-values, t-stats
-#--------------------------------------------------------
+### --------------------------------------------------------
+### tidy() outputs a table of coefficients and their p-values, t-stats
+### --------------------------------------------------------
 
 tidy(mod1)
 
@@ -425,7 +420,7 @@ tidy(mod1)
 
 # 12) MODEL 2: ELASTIC NET
 
-# Note: We used an alpha sequence from 0 to 1 in steps of 0.1.
+### Note: We used an alpha sequence from 0 to 1 in steps of 0.1.
 
 
 enet_mod <- cva.glmnet(avg_book_rating ~ num_pages + book_ratings_count + text_reviews_count + title_sentiment_avg + authorworkcount + author_fans + author_ratings_count + author_review_count + gender,
@@ -444,7 +439,7 @@ minlossplot(enet_mod,
 # 13) EXTRACT BEST LINEAR MODEL
 
 
-# Use this function to find the best alpha.
+### Use this function to find the best alpha.
 get_alpha <- function(fit) {
   alpha <- fit$alpha
   error <- sapply(fit$modlist,
@@ -453,7 +448,7 @@ get_alpha <- function(fit) {
 }
 
 
-# Get all parameters.
+### Get all parameters.
 get_model_params <- function(fit) {
   alpha <- fit$alpha
   lambdaMin <- sapply(fit$modlist, `[[`, "lambda.min")
@@ -465,12 +460,12 @@ get_model_params <- function(fit) {
 }
 
 
-# Extract the best alpha value & model parameters.
+### Extract the best alpha value & model parameters.
 best_alpha <- get_alpha(enet_mod)
 print(best_alpha)
 get_model_params(enet_mod)
 
-# Extract the best model object.
+### Extract the best model object.
 best_mod <- enet_mod$modlist[[which(enet_mod$alpha == best_alpha)]]
 
 
@@ -485,13 +480,13 @@ print(enet_best_mod)
 
 
 
-# Print the model's two suggested values of lambda.
+### Print the model's two suggested values of lambda.
 
 print(enet_best_mod$lambda.min)
 print(enet_best_mod$lambda.1se)
 
 
-# Plot how the MSE varies as we vary lambda.
+### Plot how the MSE varies as we vary lambda.
 plot(enet_best_mod)
 
 coefpath(enet_best_mod)
@@ -499,9 +494,9 @@ coefpath(enet_best_mod)
 
 
 
-# Compare lambda min & lambda 1SE...
+### Compare lambda min & lambda 1SE...
 
-# put into coefficient vector
+### put into coefficient vector
 enet_coefs <- data.frame(
   `lasso_min` = coef(enet_best_mod, s = enet_best_mod$lambda.min) %>%
     as.matrix() %>% data.frame() %>% round(3),
@@ -516,7 +511,7 @@ enet_coefs %>% kable() %>% kable_styling()
 
 # 15) MODEL 3: BOOTSTRAP AGGREGATING (BAGGING)
 
-# Need 'partykit', 'PerformanceAnalytics', 'rpart', 'rpart.plot', and 'randomForest' libraries.
+### Need 'partykit', 'PerformanceAnalytics', 'rpart', 'rpart.plot', and 'randomForest' libraries.
 
 
 options(scipen = 10)
@@ -524,7 +519,7 @@ options(scipen = 10)
 
 
 
-# store row names as columns
+### store row names as columns
 books_boot_preds <- books_corti %>% rownames_to_column() %>%
   mutate(rowname = as.numeric(rowname))
 
@@ -535,29 +530,29 @@ for(i in 1:B){
   boot_idx <- sample(1:nrow(books_corti),
                      size = num_b,
                      replace = FALSE)
-  # fit a tree on each bootstrap sample
+  ### fit a tree on each bootstrap sample
   boot_tree <- ctree(avg_book_rating ~ num_pages + book_ratings_count + text_reviews_count + title_sentiment_avg + authorworkcount + author_fans + author_ratings_count + author_review_count+ gender,
                      data = books_corti %>%
                        slice(boot_idx))
-  # store bootstraped model
+  ### store bootstraped model
   boot_mods[[i]] <- boot_tree
   # generate predictions for that bootstrap model
   preds_boot <- data.frame(
     preds_boot = predict(boot_tree),
     rowname = boot_idx
   )  
-  # rename prediction to indicate which boot iteration it came from
+  ### rename prediction to indicate which boot iteration it came from
   names(preds_boot)[1] <- paste("preds_boot",i,sep = "")
-  # merge predictions to dataset
+  ### merge predictions to dataset
   books_boot_preds <- left_join(x = books_boot_preds, y = preds_boot,
                                 by = "rowname")
 }
 
 
 
-#--------------------------------------------------------
-# plot() examines an individual model from bagging
-#--------------------------------------------------------
+### --------------------------------------------------------
+### plot() examines an individual model from bagging
+### --------------------------------------------------------
 
 plot(boot_mods[[1]], gp = gpar(fontsize = 8))
 
@@ -566,7 +561,7 @@ books_boot_preds <- books_boot_preds %>%
            select(., preds_boot1:preds_boot100) %>%
            rowMeans(na.rm = TRUE))
 
-# NOTE: At this point in the code, the model has been bootstrapped.
+### NOTE: At this point in the code, the model has been bootstrapped.
 
 
 # 16) MODEL 4: RANDOM FOREST
@@ -592,7 +587,7 @@ plot_predict_interaction(rf_fit, books_corti, "authorworkcount", "num_pages")
 plot_predict_interaction(rf_fit, books_corti, "num_pages", "title_sentiment_avg")
 
 
-# Storing predictions data frames for Linear and ElasticNet models...
+### Storing predictions data frames for Linear and ElasticNet models...
 
 lm_preds_train <- predict(mod1, newdata = books_train)
 lm_preds_test <- predict(mod1,
@@ -610,7 +605,7 @@ head(enet_preds_train)
 head(enet_preds_test)
 
 
-# Storing results data frames for Linear and ElasticNet models...
+### Storing results data frames for Linear and ElasticNet models...
 
 training_predictions <- data.frame(lm_preds_train, enet_preds_train)
 
@@ -684,11 +679,9 @@ ggplot(results_test, aes(x = avg_book_rating, y = enet_preds_test)) +
 
 
 
-#--------------------------------------------------------
 # 21) MODEL EVALUATION
-#--------------------------------------------------------
 
-# LINEAR REGRESSION TRAINING METRICS
+## LINEAR REGRESSION TRAINING METRICS
 
 rmse(books_train, truth = avg_book_rating, estimate = lm_preds_train)
 mae(books_train, truth = avg_book_rating, estimate = lm_preds_train)
@@ -696,7 +689,7 @@ rsq(books_train, truth = avg_book_rating, estimate = lm_preds_train)
 
 
 
-# LINEAR REGRESSION TEST METRICS
+## LINEAR REGRESSION TEST METRICS
 
 lm_rmse <- rmse(books_test, truth = avg_book_rating, estimate = lm_preds_test)
 lm_mae <- mae(books_test, truth = avg_book_rating, estimate = lm_preds_test)
@@ -704,7 +697,7 @@ lm_rsq <- rsq(books_test, truth = avg_book_rating, estimate = lm_preds_test)
 
 
 
-# ELASTIC NET TRAINING METRICS
+## ELASTIC NET TRAINING METRICS
 
 rmse(books_train, truth = avg_book_rating, estimate = as.vector(enet_preds_train))
 mae(books_train, truth = avg_book_rating, estimate = as.vector(enet_preds_train))
@@ -712,7 +705,7 @@ rsq(books_train, truth = avg_book_rating, estimate = as.vector(enet_preds_train)
 
 
 
-# ELASTIC NET TEST METRICS
+## ELASTIC NET TEST METRICS
 
 enet_rmse <- rmse(books_test, truth = avg_book_rating, estimate = as.vector(enet_preds_test))
 enet_mae <- mae(books_test, truth = avg_book_rating, estimate = as.vector(enet_preds_test))
@@ -720,7 +713,7 @@ enet_rsq <- rsq(books_test, truth = avg_book_rating, estimate = as.vector(enet_p
 
 
 
-# Tree OUT-OF-BAG Predictions...
+## Tree OUT-OF-BAG Predictions...
 
 books_right_join <- right_join(books_corti, books_boot_preds)
 books_right_join <- books_right_join %>% ungroup()
@@ -731,7 +724,7 @@ tree_rsq <- rsq(books_right_join, truth = avg_book_rating, estimate = preds_bag)
 
 
 
-# Random Forest OUT-OF-BAG Predictions...
+## Random Forest OUT-OF-BAG Predictions...
 
 preds_OOB <- predict(rf_fit)
 
@@ -743,7 +736,7 @@ rf_mae <- mae(books_corti, truth = avg_book_rating, estimate = preds_OOB)
 
 # 22) MERGING -- RSQ, RMSE & MAE COMBINED DATA FRAME
 
-# All testing data predictions...
+## All testing data predictions...
 
 
 rsq_DF <- merge(rf_rsq, enet_rsq, by=c(".metric", ".estimator"))
@@ -780,26 +773,25 @@ print(final)
 
 # 23) METRICS DATA TABLE
 
-# Credit for the code below:
-#  https://rfortherestofus.com/2019/11/how-to-make-beautiful-tables-in-r/
+### Credit for the code below:
+###  https://rfortherestofus.com/2019/11/how-to-make-beautiful-tables-in-r/
 
 
-# Need to load 'kableExtra' library.
+### Need to load 'kableExtra' library.
 
 
 final %>% kable() %>% kable_styling()
 
 
-# Credit for code below:
-# https://www.littlemissdata.com/blog/prettytables
+### Credit for code below:
+### https://www.littlemissdata.com/blog/prettytables
 
-# Need to load 'formattable', 'tidyr', and 'data.table' libraries.
+### Need to load 'formattable', 'tidyr', and 'data.table' libraries.
 
 custom_one = "#CCCCFF"
 custom_two = "skyblue"
 custom_three = "#4ec5a5"
 custom_coral = "#FA7268"
-# custom_green = "#00AD43"
 
 formattable(final,
             align =c("l","c","c","c","c", "c", "c", "c", "r"),
