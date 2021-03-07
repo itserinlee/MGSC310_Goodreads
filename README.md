@@ -5,7 +5,7 @@
 
 ![mixkit-person-using-binoculars-peering-out-from-behind-a-bush-24-original (2)](https://user-images.githubusercontent.com/69367085/102598800-68787780-40d1-11eb-80e3-87a247d07ba0.png)
 
-###### (source: https://mixkit.co/free-stock-art/person-using-binoculars-peering-out-from-behind-a-bush-24/ )
+###### Click [here](https://mixkit.co/free-stock-art/person-using-binoculars-peering-out-from-behind-a-bush-24/) for image source.
 
 ## Datasets folder
 - "books.csv" file: https://www.kaggle.com/jealousleopard/goodreadsbooks
