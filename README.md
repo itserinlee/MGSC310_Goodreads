@@ -1,7 +1,8 @@
 
 # MGSC 310 Final Project: Building Predictive Models
-*Fall 2020 MGSC-310-01*
+***Fall 2020 MGSC-310-01***
 
+*[Corinne Smith](https://github.com/corinneorpaige), Erin Lee, Jon Le, Adam Gonzalez, Debbie Lu*
 
 ## Datasets
 - [books.csv](https://www.kaggle.com/jealousleopard/goodreadsbooks)
