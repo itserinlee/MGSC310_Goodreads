@@ -3,12 +3,6 @@
 *Fall 2020 MGSC-310-01*
 
 
-<p align="center">
-<img src="https://user-images.githubusercontent.com/69367085/102598800-68787780-40d1-11eb-80e3-87a247d07ba0.png" height="375">
-</p>
-
-###### Click [here](https://mixkit.co/free-stock-art/person-using-binoculars-peering-out-from-behind-a-bush-24/) for image source.
-
 ## Datasets folder
 - "books.csv" file: https://www.kaggle.com/jealousleopard/goodreadsbooks
 - "final_dataset.csv" file: https://www.kaggle.com/choobani/goodread-authors?select=final_dataset.csv
