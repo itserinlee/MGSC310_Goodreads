@@ -10,7 +10,7 @@
 ###### Note: Both Kaggle data sets were originally scraped from the Goodreads API.
 
 ## Programming Language
-- R
+R
 
 ## Data At-A-Glance
 - variables used in project:
