@@ -28,10 +28,8 @@
     - “author_ratings_count
     - “author_review_count”
     - “gender”
-###### Note: removed 11 variables from original data set
 
-## Known Errors
-N/A
+###### Note: removed 11 variables from original data set
 
 ## Instructions
 
