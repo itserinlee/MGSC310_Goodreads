@@ -4,8 +4,8 @@
 
 
 ## Datasets folder
-- "books.csv" file: https://www.kaggle.com/jealousleopard/goodreadsbooks
-- "final_dataset.csv" file: https://www.kaggle.com/choobani/goodread-authors?select=final_dataset.csv
+- [books.csv](https://www.kaggle.com/jealousleopard/goodreadsbooks)
+- [final_dataset.csv](https://www.kaggle.com/choobani/goodread-authors?select=final_dataset.csv)
 ###### Note: Both Kaggle data sets were originally scraped from the Goodreads API.
 
 ## Programming Language
