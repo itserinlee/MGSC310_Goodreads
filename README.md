@@ -1,5 +1,5 @@
 
-# MGSC 310 Final Project: Building Predictive Models
+# Predictive Modeling on Goodreads Dataset
 ***Fall 2020 MGSC-310-01***
 
 *Corinne Smith, Erin Lee, Jon Le, Adam Gonzalez, Debbie Lu*
