@@ -2,6 +2,8 @@
 # Predictive Modeling on Goodreads Dataset
 ***Fall 2020 MGSC-310-01***
 
+***Statistical Models for Business Analytics (Introduction to Machine Learning) - MGSC 310, (Fall 2020)***
+
 *Corinne Smith, Erin Lee, Jon Le, Adam Gonzalez, Debbie Lu*
 
 ## Datasets
